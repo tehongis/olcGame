@@ -32,12 +32,17 @@ public:
 
 		fAngle += fElapsedTime;
 
-		olc::vf2d xy =  { 160.0f + std::cos(fAngle),  120.0f + std::sin(fAngle) };
 
-		DrawRotatedDecal(xy, decBlock,fAngle,
-		{ float(sprBlock->width) / 2.0f, float(sprBlock->height) / 2.0f },
-		{ float(0.2f), float(0.2f) }
-		);
+		for (int count = 0; count < 512; count++) {
+			olc::vf2d xy =  { ScreenWidth() / 2 + 160.0f * std::cos(fAngle + float(count/25.0f)), ScreenHeight() / 2 + 120.0f * std::sin(fAngle + (float(count/40.0f)) ) };
+			olc::Pixel color = olc::Pixel(255,255,255,int(128 + 128 * std::sin(count / 40.0f)) );
+			DrawRotatedDecal(xy, decBlock, -2.0 * fAngle + float(count/256.0f),
+				{ float(sprBlock->width) / 2.0f, float(sprBlock->height) / 2.0f },
+				{ float(0.2f), float(0.2f) },
+				color
+			);
+
+		}
 		//DrawDecal(mouse, decBlock);
 	    // DrawDecal(const olc::vf2d& pos, olc::Decal* decal, const olc::vf2d& scale, const olc::Pixel& tint)
 
