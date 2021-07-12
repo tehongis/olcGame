@@ -32,7 +32,9 @@ public:
 
 		fAngle += fElapsedTime;
 
-		DrawRotatedDecal(mouse, decBlock,fAngle,
+		olc::vf2d xy =  { 160.0f + std::cos(fAngle),  120.0f + std::sin(fAngle) };
+
+		DrawRotatedDecal(xy, decBlock,fAngle,
 		{ float(sprBlock->width) / 2.0f, float(sprBlock->height) / 2.0f },
 		{ float(0.2f), float(0.2f) }
 		);
