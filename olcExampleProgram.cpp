@@ -37,7 +37,7 @@ public:
 		{ float(0.2f), float(0.2f) }
 		);
 		//DrawDecal(mouse, decBlock);
-	    DrawDecal(const olc::vf2d& pos, olc::Decal* decal, const olc::vf2d& scale, const olc::Pixel& tint)
+	    // DrawDecal(const olc::vf2d& pos, olc::Decal* decal, const olc::vf2d& scale, const olc::Pixel& tint)
 
 		return true;
 	}

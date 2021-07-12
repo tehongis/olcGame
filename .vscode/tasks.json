@@ -4,26 +4,76 @@
 		{
 			"type": "cppbuild",
 			"label": "C/C++: cl.exe build active file",
-			"command": "cl.exe",
-			"args": [
-				"/Zi",
-				"/EHsc",
-				"/nologo",
-				"/Fe:",
-				"${fileDirname}\\${fileBasenameNoExtension}.exe",
-				"${workspaceFolder}\\*.cpp"
-			],
-			"options": {
-				"cwd": "${fileDirname}"
+			"windows": {
+				"command": "cl.exe",
+				"args": [
+					"/Zi",
+					"/EHsc",
+					"/nologo",
+					"/Fe:",
+					"${fileDirname}\\${fileBasenameNoExtension}.exe",
+					"${file}"
+				],
+				"options": {
+					"cwd": "${fileDirname}"
+				},
+				"problemMatcher": [
+					"$msCompile"
+				],
+				"group": {
+					"kind": "build",
+					"isDefault": true
+				},
+				"detail": "compiler: cl.exe"
+				},
+			"linux": {
+				"command": "/usr/bin/g++",
+				"args": [
+					"-g",
+					"${file}",
+					"-o",
+					"${fileDirname}/${fileBasenameNoExtension}",
+					"-lX11",
+					"-lGL",
+					"-lpthread",
+					"-lpng",
+					"-lstdc++fs",
+					"-std=c++17"
+				],
+				"options": {
+					"cwd": "${fileDirname}"
+				},
+				"problemMatcher": [
+					"$gcc"
+				],
+				"group": "build",
+				"detail": "compiler: /usr/bin/g++"	
+				}
 			},
-			"problemMatcher": [
-				"$msCompile"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"detail": "compiler: cl.exe"
+			{
+				"type": "cppbuild",
+				"label": "C/C++: g++ build active file",
+				"command": "/usr/bin/g++",
+				"args": [
+					"-g",
+					"${file}",
+					"-o",
+					"${fileDirname}/${fileBasenameNoExtension}",
+					"-lX11",
+					"-lGL",
+					"-lpthread",
+					"-lpng",
+					"-lstdc++fs",
+					"-std=c++17"
+				],
+				"options": {
+					"cwd": "${fileDirname}"
+				},
+				"problemMatcher": [
+					"$gcc"
+				],
+				"group": "build",
+				"detail": "compiler: /usr/bin/g++"	
 		}
 	]
 }
