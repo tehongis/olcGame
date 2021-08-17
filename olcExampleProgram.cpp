@@ -9,13 +9,21 @@ public:
 		sAppName = "Example";
 	}
 
+	olc::Sprite* sprCross = nullptr;
+	olc::Decal* decCross = nullptr;
+
 	olc::Sprite* sprBlock = nullptr;
 	olc::Decal* decBlock = nullptr;
+
 	float fAngle = 0;
 
 public:
 	bool OnUserCreate() override
 	{
+
+		sprCross = new olc::Sprite("XHair.png");
+		decCross = new olc::Decal(sprCross);
+
 
 		sprBlock = new olc::Sprite("./Tiles/5.png");
 		decBlock = new olc::Decal(sprBlock);
@@ -43,7 +51,8 @@ public:
 			);
 
 		}
-		//DrawDecal(mouse, decBlock);
+		olc::vf2d loc = {mouse.x-31,mouse.y-31};
+		DrawDecal(loc, decCross,{1.0f,1.0f});
 	    // DrawDecal(const olc::vf2d& pos, olc::Decal* decal, const olc::vf2d& scale, const olc::Pixel& tint)
 
 		return true;
@@ -54,7 +63,7 @@ public:
 int main()
 {
 	Example demo;
-	if (demo.Construct(320, 240, 4, 4))
+	if (demo.Construct(640, 480, 2, 2))
 		demo.Start();
 
 	return 0;
